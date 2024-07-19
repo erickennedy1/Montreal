@@ -8,13 +8,13 @@ public class VerificaEntradaXR : MonoBehaviour
 {
     public InputActionProperty ButtonAction;
     public CanvasGroup targetCanvasGroup;
-    public float fadeDuration = 1.0f;
+    public float fadeDuration = 2.0f;
 
-    public GameObject timerEvidencias;
+    public GameObject proxEtapa;
 
     public void Start()
     {
-        timerEvidencias.SetActive(false);
+        proxEtapa.SetActive(false);
     }
 
     private void OnEnable()
@@ -31,6 +31,7 @@ public class VerificaEntradaXR : MonoBehaviour
 
     private void OnButtonPressed(InputAction.CallbackContext context)
     {
+        Debug.Log("Botao pressionado.");
         StartCoroutine(FadeOutCanvasGroup(targetCanvasGroup, fadeDuration));
     }
 
@@ -52,7 +53,7 @@ public class VerificaEntradaXR : MonoBehaviour
 
             canvasGroup.alpha = endAlpha;
 
-            timerEvidencias.SetActive(true);
+            proxEtapa.SetActive(true);
         }
     }
 }
