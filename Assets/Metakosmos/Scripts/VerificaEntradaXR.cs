@@ -38,6 +38,7 @@ public class VerificaEntradaXR : MonoBehaviour
 
     private IEnumerator FadeOutCanvasGroup(CanvasGroup canvasGroup, float duration)
     {
+
         if (canvasGroup != null)
         {
             float startAlpha = canvasGroup.alpha;
@@ -52,8 +53,9 @@ public class VerificaEntradaXR : MonoBehaviour
             }
 
             canvasGroup.alpha = endAlpha;
-
-            proxEtapa.SetActive(true);
         }
+
+        proxEtapa.SetActive(true);
+        this.gameObject.SetActive(false);
     }
 }

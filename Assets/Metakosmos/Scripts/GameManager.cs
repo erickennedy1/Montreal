@@ -5,7 +5,7 @@ using UnityEngine.XR;
 public class GameManager : MonoBehaviour
 {
     public Cronometro timerScript;
-    public InvesticacaoManager investigationManager;
+    public InvestigacaoManager investigationManager;
     public Transform vrRig; 
     public Transform resetPosition; 
 
@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     {
         timerScript.ResetTimer();
 
-        investigationManager.ResetEvidences();
+        investigationManager.ResetEstados();
 
         ResetVRRigPosition();
 
