@@ -1,6 +1,7 @@
 using UnityEngine.Video;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 using System.Collections;
 
 public class VideoEndDesactivate : MonoBehaviour
@@ -21,6 +22,8 @@ public class VideoEndDesactivate : MonoBehaviour
     public GameObject proximoCanvas;
 
     public AudioSource audioSource;
+    public Image targetImage;
+    public float imageFadeDuration = 1.0f;
 
     void Start()
     {
@@ -86,7 +89,6 @@ public class VideoEndDesactivate : MonoBehaviour
         if (videoEnded)
         {
             StartCoroutine(FadeCanvasGroup());
-            PlayAudio();
         }
     }
 
@@ -138,12 +140,40 @@ public class VideoEndDesactivate : MonoBehaviour
             yield return null;
         }
 
-        if (proximaEtapa == true)
+        if (proximaEtapa)
         {
             proximoCanvas.SetActive(true);
         }
 
         canvasGroup.alpha = 0;
+
+        if (targetImage != null)
+        {
+            yield return StartCoroutine(FadeImage());
+        }
+
+        PlayAudio();
+        this.gameObject.SetActive(false);
+    }
+
+    private IEnumerator FadeImage()
+    {
+        Color startColor = targetImage.color;
+        float rate = 1.0f / imageFadeDuration;
+        float progress = 0.0f;
+
+        while (progress < 1.0f)
+        {
+            Color newColor = startColor;
+            newColor.a = Mathf.Lerp(startColor.a, 0, progress);
+            targetImage.color = newColor;
+            progress += rate * Time.deltaTime;
+            yield return null;
+        }
+
+        Color finalColor = targetImage.color;
+        finalColor.a = 0;
+        targetImage.color = finalColor;
     }
 
     private void PlayAudio()

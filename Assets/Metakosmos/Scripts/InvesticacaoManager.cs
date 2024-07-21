@@ -1,39 +1,46 @@
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class InvesticacaoManager : MonoBehaviour
+public class InvestigacaoManager : MonoBehaviour
 {
-    public TextMeshProUGUI evidenciasText; 
-    private int evidenciasTotal = 5;
+    // Array de sprites que representam diferentes estados do jogo
+    public Sprite[] estadoSprites;
+    // Referência ao componente Image onde a sprite será alterada
+    public Image estadoImage;
     public GameObject Conclusao;
 
-    private int evidenciasAnalisadas = 0;
-    private HashSet<GameObject> objetosAnalisados = new HashSet<GameObject>();
+    private int estadoAtual = 0;
+    private int totalEstados;
 
     void Start()
     {
-        UpdateEvidenceText();
+        totalEstados = estadoSprites.Length;
+        UpdateEstadoImage();
         Conclusao.SetActive(false);
     }
 
-    public void AnalyzeEvidence(GameObject evidence)
+    public void AvancarEstado()
     {
-        if (!objetosAnalisados.Contains(evidence))
+        if (estadoAtual < totalEstados - 1)
         {
-            objetosAnalisados.Add(evidence);
-            evidenciasAnalisadas++;
-            UpdateEvidenceText();
+            estadoAtual++;
+            UpdateEstadoImage();
         }
-        if (evidenciasAnalisadas >= evidenciasTotal)
+
+        if (estadoAtual >= totalEstados - 1)
         {
             ConclusaoFinal();
         }
     }
 
-    private void UpdateEvidenceText()
+    private void UpdateEstadoImage()
     {
-        evidenciasText.text = $"EVIDÊNCIAS ANALISADAS\n{evidenciasAnalisadas}/{evidenciasTotal}";
+        if (estadoAtual >= 0 && estadoAtual < totalEstados)
+        {
+            estadoImage.sprite = estadoSprites[estadoAtual];
+            estadoImage.color = new Color(estadoImage.color.r, estadoImage.color.g, estadoImage.color.b, 1.0f); // Definir opacidade total
+        }
     }
 
     private void ConclusaoFinal()
@@ -41,11 +48,10 @@ public class InvesticacaoManager : MonoBehaviour
         Conclusao.SetActive(true);
     }
 
-    public void ResetEvidences()
+    public void ResetEstados()
     {
-        evidenciasAnalisadas = 0;
-        objetosAnalisados.Clear();
-        UpdateEvidenceText();
+        estadoAtual = 0;
+        UpdateEstadoImage();
         Conclusao.SetActive(false);
     }
 }
