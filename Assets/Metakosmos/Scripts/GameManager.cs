@@ -4,28 +4,13 @@ using UnityEngine.XR;
 
 public class GameManager : MonoBehaviour
 {
-    public Cronometro timerScript;
     public InvestigacaoManager investigationManager;
-    public Transform vrRig; 
-    public Transform resetPosition; 
 
     public void RestartGame()
     {
-        timerScript.ResetTimer();
-
         investigationManager.ResetEstados();
 
-        ResetVRRigPosition();
-
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    private void ResetVRRigPosition()
-    {
-        if (resetPosition != null)
-        {
-            vrRig.position = resetPosition.position;
-            vrRig.rotation = resetPosition.rotation;
-        }
-    }
 }
