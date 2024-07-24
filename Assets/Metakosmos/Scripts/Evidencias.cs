@@ -31,7 +31,7 @@ public class Evidencias : MonoBehaviour
         }
         else
         {
-            Debug.LogError("VideoPlayer não encontrado!");
+            Debug.LogError("VideoPlayer nï¿½o encontrado!");
         }
 
         if (repetirButton != null)
@@ -142,7 +142,6 @@ public class Evidencias : MonoBehaviour
                 avancarButton.SetActive(false);
             }
 
-            // Desativa o GameObject que contém o script
             gameObject.SetActive(false);
         }
     }

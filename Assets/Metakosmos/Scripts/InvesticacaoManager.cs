@@ -4,11 +4,10 @@ using UnityEngine.UI;
 
 public class InvestigacaoManager : MonoBehaviour
 {
-    // Array de sprites que representam diferentes estados do jogo
     public Sprite[] estadoSprites;
-    // Referência ao componente Image onde a sprite será alterada
     public Image estadoImage;
     public GameObject Conclusao;
+    public GameObject Timer;
 
     private int estadoAtual = 0;
     private int totalEstados;
@@ -39,13 +38,14 @@ public class InvestigacaoManager : MonoBehaviour
         if (estadoAtual >= 0 && estadoAtual < totalEstados)
         {
             estadoImage.sprite = estadoSprites[estadoAtual];
-            estadoImage.color = new Color(estadoImage.color.r, estadoImage.color.g, estadoImage.color.b, 1.0f); // Definir opacidade total
+            estadoImage.color = new Color(estadoImage.color.r, estadoImage.color.g, estadoImage.color.b, 1.0f); 
         }
     }
 
     private void ConclusaoFinal()
     {
         Conclusao.SetActive(true);
+        Timer.SetActive(false);
     }
 
     public void ResetEstados()
