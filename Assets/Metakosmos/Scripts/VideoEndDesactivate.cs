@@ -22,6 +22,7 @@ public class VideoEndDesactivate : MonoBehaviour
     public GameObject proximoCanvas;
 
     public AudioSource audioSource;
+    public AudioSource secondAudioSource; // Segundo AudioSource
     public Image targetImage;
     public float imageFadeDuration = 1.0f;
 
@@ -38,7 +39,7 @@ public class VideoEndDesactivate : MonoBehaviour
         }
         else
         {
-            Debug.LogError("VideoPlayer n„o encontrado!");
+            Debug.LogError("VideoPlayer n√£o encontrado!");
         }
 
         if (Repetir != null)
@@ -181,6 +182,21 @@ public class VideoEndDesactivate : MonoBehaviour
         if (audioSource != null)
         {
             audioSource.Play();
+        }
+
+        if (secondAudioSource != null)
+        {
+            secondAudioSource.Play();
+            StartCoroutine(StopSecondAudioAfterDelay(0.1f)); 
+        }
+    }
+
+    private IEnumerator StopSecondAudioAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        if (secondAudioSource != null)
+        {
+            secondAudioSource.Stop();
         }
     }
 }

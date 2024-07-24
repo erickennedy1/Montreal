@@ -51,6 +51,6 @@ public class Evidencias01 : MonoBehaviour
             investigacaoManager.AvancarEstado();
         }
 
-        gameObject.SetActive(false);
+        concluirButton.SetActive(false);
     }
 }
