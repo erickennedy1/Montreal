@@ -6,12 +6,12 @@ using UnityEngine.InputSystem;
 public class Evidencias01 : MonoBehaviour
 {
     public GameObject concluirButton;
-
     public InputActionProperty ConcluirAction;
 
     private HashSet<GameObject> objetosAnalisados = new HashSet<GameObject>();
-
     public InvestigacaoManager investigacaoManager;
+
+    private bool isReady = false;
 
     void Start()
     {
@@ -25,6 +25,7 @@ public class Evidencias01 : MonoBehaviour
     {
         ConcluirAction.action.performed += OnConcluirPerformed;
         ConcluirAction.action.Enable();
+        StartCoroutine(WaitAndEnable());
     }
 
     private void OnDisable()
@@ -40,7 +41,10 @@ public class Evidencias01 : MonoBehaviour
 
     private void OnConcluirPerformed(InputAction.CallbackContext context)
     {
-        Concluir();
+        if (isReady)
+        {
+            Concluir();
+        }
     }
 
     private void Concluir()
@@ -52,5 +56,12 @@ public class Evidencias01 : MonoBehaviour
         }
 
         concluirButton.SetActive(false);
+    }
+
+    private IEnumerator WaitAndEnable()
+    {
+        isReady = false;
+        yield return new WaitForSeconds(0.1f); 
+        isReady = true;
     }
 }
