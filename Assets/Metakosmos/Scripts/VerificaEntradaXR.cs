@@ -1,16 +1,15 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.XR;
-using UnityEngine.XR.Interaction.Toolkit;
 using System.Collections;
 
-public class VerificaEntradaXR : MonoBehaviour
+public class ComecarExperiencia : MonoBehaviour
 {
     public InputActionProperty ButtonAction;
     public CanvasGroup targetCanvasGroup;
     public float fadeDuration = 2.0f;
-
     public GameObject proxEtapa;
+    public AudioSource audioSource; 
+    public AudioClip audioClip; 
 
     public void Start()
     {
@@ -31,14 +30,18 @@ public class VerificaEntradaXR : MonoBehaviour
 
     private void OnButtonPressed(InputAction.CallbackContext context)
     {
-        Debug.Log("Botao pressionado.");
+        Debug.Log("Botão pressionado.");
         StartCoroutine(FadeOutCanvasGroup(targetCanvasGroup, fadeDuration));
-    }
+        
 
+        if (audioSource != null && audioClip != null)
+        {
+            audioSource.PlayOneShot(audioClip);
+        }
+    }
 
     private IEnumerator FadeOutCanvasGroup(CanvasGroup canvasGroup, float duration)
     {
-
         if (canvasGroup != null)
         {
             float startAlpha = canvasGroup.alpha;

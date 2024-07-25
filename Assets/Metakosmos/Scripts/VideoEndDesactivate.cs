@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using System.Collections;
 
-public class VideoEndDesactivate : MonoBehaviour
+public class VideoInicialControler : MonoBehaviour
 {
     public VideoPlayer videoPlayer;
     public GameObject Repetir;
@@ -22,9 +22,13 @@ public class VideoEndDesactivate : MonoBehaviour
     public GameObject proximoCanvas;
 
     public AudioSource audioSource;
-    public AudioSource secondAudioSource; // Segundo AudioSource
+    public AudioClip firstAudioClip;
+    public AudioClip secondAudioClip;
     public Image targetImage;
     public float imageFadeDuration = 1.0f;
+
+    public AudioSource secondAudioSource;
+    public AudioClip audioForSecondAudioSource;
 
     void Start()
     {
@@ -134,6 +138,8 @@ public class VideoEndDesactivate : MonoBehaviour
         float rate = 1.0f / fadeDuration;
         float progress = 0.0f;
 
+        PlaySecondAudio();
+
         while (progress < 1.0f)
         {
             canvasGroup.alpha = Mathf.Lerp(startAlpha, 0, progress);
@@ -150,10 +156,11 @@ public class VideoEndDesactivate : MonoBehaviour
 
         if (targetImage != null)
         {
+            PlayAudio(firstAudioClip);
             yield return StartCoroutine(FadeImage());
         }
 
-        PlayAudio();
+        PlayAudio(secondAudioClip);
         this.gameObject.SetActive(false);
     }
 
@@ -177,17 +184,32 @@ public class VideoEndDesactivate : MonoBehaviour
         targetImage.color = finalColor;
     }
 
-    private void PlayAudio()
+    private void PlayAudio(AudioClip clip)
     {
+        if (audioSource != null && clip != null)
+        {
+            audioSource.clip = clip;
+            audioSource.Play();
+            StartCoroutine(StopAudioAfterDelay(audioSource.clip.length));
+        }
+    }
+
+    private void PlaySecondAudio()
+    {
+        if (secondAudioSource != null && audioForSecondAudioSource != null)
+        {
+            secondAudioSource.clip = audioForSecondAudioSource;
+            secondAudioSource.Play();
+            StartCoroutine(StopSecondAudioAfterDelay(secondAudioSource.clip.length));
+        }
+    }
+
+    private IEnumerator StopAudioAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
         if (audioSource != null)
         {
-            audioSource.Play();
-        }
-
-        if (secondAudioSource != null)
-        {
-            secondAudioSource.Play();
-            StartCoroutine(StopSecondAudioAfterDelay(0.1f)); 
+            audioSource.Stop();
         }
     }
 
