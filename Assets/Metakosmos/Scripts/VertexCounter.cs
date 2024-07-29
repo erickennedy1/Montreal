@@ -5,7 +5,7 @@ public class VertexCounter : MonoBehaviour
 {
     public TextMeshProUGUI vertexCountText;
 
-    void Start()
+    void Update()
     {
         int totalVertices = 0;
         MeshFilter[] meshFilters = FindObjectsOfType<MeshFilter>();
@@ -17,8 +17,6 @@ public class VertexCounter : MonoBehaviour
                 totalVertices += meshFilter.sharedMesh.vertexCount;
             }
         }
-
-        Debug.Log("Total Vertices in Scene: " + totalVertices);
 
         if (vertexCountText != null)
         {
