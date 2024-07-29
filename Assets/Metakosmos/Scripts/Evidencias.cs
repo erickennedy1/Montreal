@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Video;
+using UnityEngine.UI;
 
 public class Evidencias : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class Evidencias : MonoBehaviour
     public InputActionProperty AvancarAction;
 
     private bool videoEnded = false;
+    private bool isReady = false;
     private HashSet<GameObject> objetosAnalisados = new HashSet<GameObject>();
 
     public InvestigacaoManager investigacaoManager;
@@ -31,17 +33,19 @@ public class Evidencias : MonoBehaviour
         }
         else
         {
-            Debug.LogError("VideoPlayer n�o encontrado!");
+            Debug.LogError("VideoPlayer não encontrado!");
         }
 
         if (repetirButton != null)
         {
-            repetirButton.SetActive(false);
+            repetirButton.SetActive(true);
+            repetirButton.GetComponent<Button>().onClick.AddListener(ResetVideo);
         }
 
         if (avancarButton != null)
         {
-            avancarButton.SetActive(false);
+            avancarButton.SetActive(true);
+            avancarButton.GetComponent<Button>().onClick.AddListener(Avancar);
         }
     }
 
@@ -52,6 +56,8 @@ public class Evidencias : MonoBehaviour
 
         AvancarAction.action.performed += OnAvancarPerformed;
         AvancarAction.action.Enable();
+
+        StartCoroutine(WaitAndEnable());
     }
 
     private void OnDisable()
@@ -71,7 +77,7 @@ public class Evidencias : MonoBehaviour
 
     private void OnResetVideoPerformed(InputAction.CallbackContext context)
     {
-        if (videoEnded)
+        if (isReady)
         {
             ResetVideo();
         }
@@ -79,7 +85,7 @@ public class Evidencias : MonoBehaviour
 
     private void OnAvancarPerformed(InputAction.CallbackContext context)
     {
-        if (videoEnded)
+        if (isReady)
         {
             Avancar();
         }
@@ -88,16 +94,6 @@ public class Evidencias : MonoBehaviour
     private void OnVideoEnd(VideoPlayer vp)
     {
         videoEnded = true;
-
-        if (repetirButton != null)
-        {
-            repetirButton.SetActive(true);
-        }
-
-        if (avancarButton != null)
-        {
-            avancarButton.SetActive(true);
-        }
     }
 
     private void ResetVideo()
@@ -107,42 +103,25 @@ public class Evidencias : MonoBehaviour
             videoPlayer.Stop();
             videoPlayer.Play();
             videoEnded = false;
-
-            if (repetirButton != null)
-            {
-                repetirButton.SetActive(false);
-            }
-
-            if (avancarButton != null)
-            {
-                avancarButton.SetActive(false);
-            }
         }
     }
 
     private void Avancar()
     {
-        if (videoEnded)
+        if (!objetosAnalisados.Contains(videoPlayer.gameObject))
         {
-            if (!objetosAnalisados.Contains(videoPlayer.gameObject))
-            {
-                objetosAnalisados.Add(videoPlayer.gameObject);
-                investigacaoManager.AvancarEstado();
-            }
-
-            videoEnded = false;
-
-            if (repetirButton != null)
-            {
-                repetirButton.SetActive(false);
-            }
-
-            if (avancarButton != null)
-            {
-                avancarButton.SetActive(false);
-            }
-
-            gameObject.SetActive(false);
+            objetosAnalisados.Add(videoPlayer.gameObject);
+            investigacaoManager.AvancarEstado();
         }
+
+        videoEnded = false;
+        gameObject.SetActive(false);
+    }
+
+    private IEnumerator WaitAndEnable()
+    {
+        isReady = false;
+        yield return new WaitForSeconds(0.1f); 
+        isReady = true;
     }
 }

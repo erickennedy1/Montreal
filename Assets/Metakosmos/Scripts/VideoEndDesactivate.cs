@@ -48,12 +48,12 @@ public class VideoInicialControler : MonoBehaviour
 
         if (Repetir != null)
         {
-            Repetir.SetActive(false);
+            Repetir.GetComponent<Button>().onClick.AddListener(RepeatVideo);
         }
 
         if (Avancar != null)
         {
-            Avancar.SetActive(false);
+            Avancar.GetComponent<Button>().onClick.AddListener(() => StartCoroutine(FadeCanvasGroup()));
         }
     }
 
@@ -83,33 +83,17 @@ public class VideoInicialControler : MonoBehaviour
 
     void OnResetActionPerformed(InputAction.CallbackContext context)
     {
-        if (videoEnded)
-        {
-            RepeatVideo();
-        }
+        RepeatVideo();
     }
 
     void OnPlayActionPerformed(InputAction.CallbackContext context)
     {
-        if (videoEnded)
-        {
-            StartCoroutine(FadeCanvasGroup());
-        }
+        StartCoroutine(FadeCanvasGroup());
     }
 
     void OnVideoEnd(VideoPlayer vp)
     {
         videoEnded = true;
-
-        if (Repetir != null)
-        {
-            Repetir.SetActive(true);
-        }
-
-        if (Avancar != null)
-        {
-            Avancar.SetActive(true);
-        }
     }
 
     public void RepeatVideo()
@@ -119,16 +103,6 @@ public class VideoInicialControler : MonoBehaviour
             videoPlayer.Stop();
             videoPlayer.Play();
             videoEnded = false;
-
-            if (Repetir != null)
-            {
-                Repetir.SetActive(false);
-            }
-
-            if (Avancar != null)
-            {
-                Avancar.SetActive(false);
-            }
         }
     }
 
