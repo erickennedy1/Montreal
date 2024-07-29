@@ -3,7 +3,197 @@ guid: ed5c8967cad35bc429307331c5c36039
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Arms.004
+    second: {fileID: 2100000, guid: cb468b1a02fcbad41a24bc18bf34618c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Body.004
+    second: {fileID: 2100000, guid: 15d74a82a3a4b9e41a337fb214258068, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ears.005
+    second: {fileID: 2100000, guid: f7c8cf65dd48163478a90ca0b4ff88a6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: EyeSocket.005
+    second: {fileID: 2100000, guid: ea70ea20fce9db04abfcde2e49f3c67e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Face.004
+    second: {fileID: 2100000, guid: bfc5222414665ed4b99be5faab1968dd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fingernails.005
+    second: {fileID: 2100000, guid: 0e27058d6a8261c4693056e1d9cb2d53, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Head.004
+    second: {fileID: 2100000, guid: 47f36f14ffa12774e93a89cb73497056, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Irises.005
+    second: {fileID: 2100000, guid: 72617a61a725cec4fbf38c2675accf65, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Legs.004
+    second: {fileID: 2100000, guid: 3b74e1f9546824b4da3837d624f8a4b0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Lips.005
+    second: {fileID: 2100000, guid: c8c8eb98ac3979a49a2084a26a79bdb1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mouth.005
+    second: {fileID: 2100000, guid: 4fd35935b33dc4f43ad18bd5ed7923ae, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pupils.004
+    second: {fileID: 2100000, guid: 853a3a3fe3d186f4dab733c8bf13930e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Sclera.005
+    second: {fileID: 2100000, guid: 34a118f5b403a424dad68ce01a9ed532, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tear.004
+    second: {fileID: 2100000, guid: 565ace723fd85d24b85f77ca55a84c9e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Teeth.004
+    second: {fileID: 2100000, guid: d7c60903a7325734da15da2f0c4fda8e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Toenails.005
+    second: {fileID: 2100000, guid: 5db50653bdd3e3c41817f6a25f6453eb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: defaultMat.043
+    second: {fileID: 2100000, guid: 2804245c8c1ee8348a4a7239efb4e3b0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: defaultMat.044
+    second: {fileID: 2100000, guid: f103fe78c1a238a479545f1f55646d71, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: defaultMat.045
+    second: {fileID: 2100000, guid: 861f1de0ccd92664cbd6d50bd8407021, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: defaultMat.046
+    second: {fileID: 2100000, guid: a532984514936ae46bb25f24ee69c5f6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: defaultMat.049
+    second: {fileID: 2100000, guid: 506a0fd1dbfaf36459eb511742452502, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: defaultMat.050
+    second: {fileID: 2100000, guid: d4f4ce6a352998143bfc3b7517851db9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: defaultMat.051
+    second: {fileID: 2100000, guid: eeadac5dcbdf12c4ca87aabb5ea7b29c, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Base_Color
+    second: {fileID: 2800000, guid: 9e651549e81293b459a12a94b31bb71d, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: G8_1MBaseArmsMapD_1005
+    second: {fileID: 2800000, guid: c49b13a2edb307141993b7d68b51be36, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: G8_1MBaseBodyMapD_1003
+    second: {fileID: 2800000, guid: cc856b9d82edf18468190237590f4be9, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: G8_1MBaseEyesMap02D_1007
+    second: {fileID: 2800000, guid: 5df83aee1902e9649b666b1e644a3f14, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: G8_1MBaseFaceMapD01_1001
+    second: {fileID: 2800000, guid: e608a7dfca46d9a4dbb98a9411b04b55, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: G8_1MBaseHeadMapD_1002
+    second: {fileID: 2800000, guid: 9090b118805852f4a8aab2174ff9f339, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: G8_1MBaseLegsMapD_1004
+    second: {fileID: 2800000, guid: 4cc21efb8fb914645908928cf2e6f366, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: G8_1MBaseMouthMapD_1006
+    second: {fileID: 2800000, guid: 4286b004d526708469b0fcdf508aac1c, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: G8_1TearOpacity
+    second: {fileID: 2800000, guid: dd0b6af6c5046cc43bbb10fca0be854c, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: coat_Base_Color
+    second: {fileID: 2800000, guid: 00f986af68f9fd543ae1b25777926bc6, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: leather_Base_Color
+    second: {fileID: 2800000, guid: dec211c4aee12144fb09a317f69a55a6, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: pants_Base_Color
+    second: {fileID: 2800000, guid: 89c579850b1fea747b249a9045e08898, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: shirt_Base_Color
+    second: {fileID: 2800000, guid: 6f7249f309959744e9c5069b1a9f0e4c, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: steel_Base_Color
+    second: {fileID: 2800000, guid: 5943cd61bbe7bc94bbaa9ce1cce50e9d, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: tie_Base_Color
+    second: {fileID: 2800000, guid: 65cc41ad73887f648a76863712853ce4, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
