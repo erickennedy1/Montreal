@@ -27,9 +27,6 @@ public class VideoInicialControler : MonoBehaviour
     public Image targetImage;
     public float imageFadeDuration = 1.0f;
 
-    public AudioSource secondAudioSource;
-    public AudioClip audioForSecondAudioSource;
-
     void Start()
     {
         if (videoPlayer == null)
@@ -112,8 +109,6 @@ public class VideoInicialControler : MonoBehaviour
         float rate = 1.0f / fadeDuration;
         float progress = 0.0f;
 
-        PlaySecondAudio();
-
         while (progress < 1.0f)
         {
             canvasGroup.alpha = Mathf.Lerp(startAlpha, 0, progress);
@@ -168,31 +163,12 @@ public class VideoInicialControler : MonoBehaviour
         }
     }
 
-    private void PlaySecondAudio()
-    {
-        if (secondAudioSource != null && audioForSecondAudioSource != null)
-        {
-            secondAudioSource.clip = audioForSecondAudioSource;
-            secondAudioSource.Play();
-            StartCoroutine(StopSecondAudioAfterDelay(secondAudioSource.clip.length));
-        }
-    }
-
     private IEnumerator StopAudioAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
         if (audioSource != null)
         {
             audioSource.Stop();
-        }
-    }
-
-    private IEnumerator StopSecondAudioAfterDelay(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        if (secondAudioSource != null)
-        {
-            secondAudioSource.Stop();
         }
     }
 }
