@@ -27,6 +27,8 @@ public class VideoInicialControler : MonoBehaviour
     public Image targetImage;
     public float imageFadeDuration = 1.0f;
 
+    public AudioSource newAudioSource; // Novo AudioSource para o novo áudio
+
     void Start()
     {
         if (videoPlayer == null)
@@ -130,6 +132,7 @@ public class VideoInicialControler : MonoBehaviour
         }
 
         PlayAudio(secondAudioClip);
+        StartNewAudio(); // Iniciar o novo áudio
         this.gameObject.SetActive(false);
     }
 
@@ -160,6 +163,14 @@ public class VideoInicialControler : MonoBehaviour
             audioSource.clip = clip;
             audioSource.Play();
             StartCoroutine(StopAudioAfterDelay(audioSource.clip.length));
+        }
+    }
+
+    private void StartNewAudio()
+    {
+        if (newAudioSource != null)
+        {
+            newAudioSource.Play();
         }
     }
 
