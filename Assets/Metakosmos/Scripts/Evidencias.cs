@@ -8,9 +8,6 @@ using UnityEngine.UI;
 public class Evidencias : MonoBehaviour
 {
     public VideoPlayer videoPlayer;
-    public GameObject repetirButton;
-    public GameObject avancarButton;
-
     public InputActionProperty ResetVideoAction;
     public InputActionProperty AvancarAction;
 
@@ -30,22 +27,6 @@ public class Evidencias : MonoBehaviour
         if (videoPlayer != null)
         {
             videoPlayer.loopPointReached += OnVideoEnd;
-        }
-        else
-        {
-            Debug.LogError("VideoPlayer não encontrado!");
-        }
-
-        if (repetirButton != null)
-        {
-            repetirButton.SetActive(true);
-            repetirButton.GetComponent<Button>().onClick.AddListener(ResetVideo);
-        }
-
-        if (avancarButton != null)
-        {
-            avancarButton.SetActive(true);
-            avancarButton.GetComponent<Button>().onClick.AddListener(Avancar);
         }
     }
 
