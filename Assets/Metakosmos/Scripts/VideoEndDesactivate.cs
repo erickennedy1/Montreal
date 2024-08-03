@@ -28,6 +28,7 @@ public class VideoInicialControler : MonoBehaviour
     public float imageFadeDuration = 1.0f;
 
     public AudioSource newAudioSource; // Novo AudioSource para o novo áudio
+    public AudioClip newAudioClip; // Novo clipe de áudio
 
     void Start()
     {
@@ -132,7 +133,7 @@ public class VideoInicialControler : MonoBehaviour
         }
 
         PlayAudio(secondAudioClip);
-        StartNewAudio(); // Iniciar o novo áudio
+        PlayNewAudio(); // Iniciar o novo áudio
         this.gameObject.SetActive(false);
     }
 
@@ -166,10 +167,11 @@ public class VideoInicialControler : MonoBehaviour
         }
     }
 
-    private void StartNewAudio()
+    private void PlayNewAudio()
     {
-        if (newAudioSource != null)
+        if (newAudioSource != null && newAudioClip != null)
         {
+            newAudioSource.clip = newAudioClip;
             newAudioSource.Play();
         }
     }

@@ -11,6 +11,10 @@ public class Evidencias : MonoBehaviour
     public InputActionProperty ResetVideoAction;
     public InputActionProperty AvancarAction;
 
+    public AudioSource audioSource; // Adicionado
+    public AudioClip resetClip; // Adicionado
+    public AudioClip avancarClip; // Adicionado
+
     private bool videoEnded = false;
     private bool isReady = false;
     private HashSet<GameObject> objetosAnalisados = new HashSet<GameObject>();
@@ -27,6 +31,11 @@ public class Evidencias : MonoBehaviour
         if (videoPlayer != null)
         {
             videoPlayer.loopPointReached += OnVideoEnd;
+        }
+
+        if (audioSource == null)
+        {
+            audioSource = GetComponent<AudioSource>(); // Tenta obter o componente AudioSource
         }
     }
 
@@ -61,6 +70,7 @@ public class Evidencias : MonoBehaviour
         if (isReady)
         {
             ResetVideo();
+            PlaySound(resetClip); // Adicionado
         }
     }
 
@@ -69,6 +79,7 @@ public class Evidencias : MonoBehaviour
         if (isReady)
         {
             Avancar();
+            PlaySound(avancarClip); // Adicionado
         }
     }
 
@@ -104,5 +115,13 @@ public class Evidencias : MonoBehaviour
         isReady = false;
         yield return new WaitForSeconds(0.1f); 
         isReady = true;
+    }
+
+    private void PlaySound(AudioClip clip) // Adicionado
+    {
+        if (audioSource != null && clip != null)
+        {
+            audioSource.PlayOneShot(clip);
+        }
     }
 }
