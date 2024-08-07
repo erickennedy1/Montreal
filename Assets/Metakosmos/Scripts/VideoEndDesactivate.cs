@@ -30,6 +30,8 @@ public class VideoInicialControler : MonoBehaviour
     public AudioSource newAudioSource; // Novo AudioSource para o novo áudio
     public AudioClip newAudioClip; // Novo clipe de áudio
 
+    public AudioSource somDoVideo; // Novo AudioSource para o som do vídeo
+
     void Start()
     {
         if (videoPlayer == null)
@@ -84,11 +86,18 @@ public class VideoInicialControler : MonoBehaviour
     void OnResetActionPerformed(InputAction.CallbackContext context)
     {
         RepeatVideo();
+        PlaySomDoVideoFromStart(); // Reiniciar e tocar o som do vídeo
     }
 
     void OnPlayActionPerformed(InputAction.CallbackContext context)
     {
         StartCoroutine(FadeCanvasGroup());
+
+        // Pausar o novo áudio se estiver tocando
+        if (newAudioSource != null && newAudioSource.isPlaying)
+        {
+            newAudioSource.Pause();
+        }
     }
 
     void OnVideoEnd(VideoPlayer vp)
@@ -103,6 +112,15 @@ public class VideoInicialControler : MonoBehaviour
             videoPlayer.Stop();
             videoPlayer.Play();
             videoEnded = false;
+        }
+    }
+
+    private void PlaySomDoVideoFromStart()
+    {
+        if (somDoVideo != null)
+        {
+            somDoVideo.Stop(); // Parar o áudio se estiver tocando
+            somDoVideo.Play(); // Tocar o áudio desde o início
         }
     }
 

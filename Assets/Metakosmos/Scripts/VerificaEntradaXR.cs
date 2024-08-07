@@ -11,6 +11,9 @@ public class ComecarExperiencia : MonoBehaviour
     public AudioSource audioSource; 
     public AudioClip audioClip; 
 
+    public AudioSource secondAudioSource; // Novo AudioSource
+    public bool playSecondAudio = false; // Boolean para controlar o segundo AudioSource
+
     public void Start()
     {
         proxEtapa.SetActive(false);
@@ -33,10 +36,14 @@ public class ComecarExperiencia : MonoBehaviour
         Debug.Log("Botão pressionado.");
         StartCoroutine(FadeOutCanvasGroup(targetCanvasGroup, fadeDuration));
         
-
         if (audioSource != null && audioClip != null)
         {
             audioSource.PlayOneShot(audioClip);
+        }
+
+        if (playSecondAudio && secondAudioSource != null)
+        {
+            secondAudioSource.Play();
         }
     }
 
